@@ -4,9 +4,8 @@ import type { Metadata } from "next";
 import { Lexend } from "next/font/google";
 import Navbar from "@/components/Navbar";
 
-import { Toaster } from "@/components/ui/sonner";
-import { ThemeProvider } from "next-themes";
-
+import { Toaster } from "sonner";
+import { Provider } from "@/components/Providers";
 
 const lexend = Lexend({ subsets: ["latin"] });
 
@@ -22,14 +21,16 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn(lexend.className, "antialiased min-h-screen pt-16")}>
-       <ThemeProvider attribute='class'
-       defaultTheme="system"
-       enableSystem
-       disableTransitionOnChange>
+        <Provider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           <Navbar />
           {children}
           <Toaster />
-       </ThemeProvider>
+        </Provider>
       </body>
     </html>
   );

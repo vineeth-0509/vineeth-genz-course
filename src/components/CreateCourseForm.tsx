@@ -10,9 +10,23 @@ import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 import { Plus, Trash } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 type Input = z.infer<typeof createChapterSchema>;
 const CreateCourseForm = () => {
+  const router = useRouter();
+  const { mutate: createChapters, isPending } = useMutation({
+    mutationFn: async ({ title, units }: Input) => {
+      const response = await axios.post("/api/course/createChapters", {
+        title,
+        units,
+      });
+      return response.data;
+    },
+  });
   const form = useForm<Input>({
     resolver: zodResolver(createChapterSchema),
     defaultValues: {
@@ -22,7 +36,20 @@ const CreateCourseForm = () => {
   });
 
   function onSubmit(data: Input) {
-    console.log(data);
+    if (data.units.some((unit) => unit === "")) {
+      toast.error("Please fill all the units");
+      return;
+    }
+    createChapters(data, {
+      onSuccess: ({ course_id }) => {
+        toast.success("course created Successfully!");
+        router.push(`/create/${course_id}`);
+      },
+      onError: (error) => {
+        console.error(error);
+        toast.error("OOPS!: Something went wrong!");
+      },
+    });
   }
   form.watch();
   return (
@@ -108,7 +135,12 @@ const CreateCourseForm = () => {
             </div>
             <Separator className="flex-[1]" />
           </div>
-          <Button type="submit" className="w-full mt-6" size="lg">
+          <Button
+            disabled={isPending}
+            type="submit"
+            className="w-full mt-6"
+            size="lg"
+          >
             Lets Go!
           </Button>
         </form>
