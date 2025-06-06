@@ -15,11 +15,11 @@ const nextConfig: NextConfig = {
   },
 
   eslint: {
-    ignoreDuringBuilds: true, // ✅ disables ESLint on build
+    ignoreDuringBuilds: true, 
   },
 
   typescript: {
-    ignoreBuildErrors: true, // ✅ disables TypeScript type checking on build
+    ignoreBuildErrors: true,
   },
 };
 
