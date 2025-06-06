@@ -180,6 +180,15 @@ exports.Prisma.QuestionScalarFieldEnum = {
   options: 'options'
 };
 
+exports.Prisma.UserSubscriptionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  stripeCustomerId: 'stripeCustomerId',
+  stripeSubscriptionId: 'stripeSubscriptionId',
+  stripePriceId: 'stripePriceId',
+  stripeCurrentPerdiodEnd: 'stripeCurrentPerdiodEnd'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -203,7 +212,8 @@ exports.Prisma.ModelName = {
   Course: 'Course',
   Unit: 'Unit',
   Chapter: 'Chapter',
-  Question: 'Question'
+  Question: 'Question',
+  UserSubscription: 'UserSubscription'
 };
 
 /**

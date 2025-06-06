@@ -25,9 +25,9 @@ const Navbar = async () => {
               <Link href="/create" className="mr-3">
                 Create Course
               </Link>
-              <Link href="/settings" className="mr-3">
+              {/* <Link href="/settings" className="mr-3">
                 Settings
-              </Link>
+              </Link> */}
             </>
           )}
           <ThemeToggle className="mr-3" />
