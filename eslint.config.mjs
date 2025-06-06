@@ -14,9 +14,6 @@ const eslintConfig = [
   rules:{
     "eslint-disable @typescript-eslint/no-unused-vars":true
   },
-  eslint:{
-    ignoreDuringBuilds: true
-  }
 ];
 
 export default eslintConfig;
