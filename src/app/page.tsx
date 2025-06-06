@@ -1,10 +1,9 @@
-import { Button } from "@/components/ui/button";
+import { TypewriterEffectDemo } from "@/components/TypeWritter";
+
 
 
 export default function Home() {
   return (
-  <Button>
-    helo world
-  </Button>
+ <TypewriterEffectDemo/>
   )
 }

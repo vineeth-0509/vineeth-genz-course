@@ -1,6 +1,6 @@
 // lib/prisma.ts or lib/db.ts
 import "server-only";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "../generated/prisma";
 
 // Augment the global scope to cache Prisma client
 declare global {
